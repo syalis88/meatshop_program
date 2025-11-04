@@ -1,0 +1,59 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #f9f9f9;
+}
+
+.container {
+    width: 80%;
+    margin: 30px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+h1 {
+    margin-bottom: 10px;
+}
+
+.back-btn {
+    text-decoration: none;
+    background: #555;
+    padding: 7px 10px;
+    color: white;
+    border-radius: 5px;
+}
+
+.order-info p {
+    margin: 5px 0;
+}
+
+/* Table */
+.order-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.order-table th, .order-table td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Total text */
+.total {
+    margin-top: 15px;
+}
+
+/* STATUS BADGES */
+.status-badge {
+    padding: 4px 10px;
+    border-radius: 20px;
+    color: #fff;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.status-badge.pending { background: #f0ad4e; }
+.status-badge.processing { background: #5bc0de; }
+.status-badge.completed { background: #5cb85c; }
+.status-badge.cancelled { background: #d9534f; }

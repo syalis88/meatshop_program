@@ -1,0 +1,60 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #fafafa;
+}
+
+.container {
+    width: 400px;
+    margin: 50px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+h1 {
+    margin-bottom: 15px;
+}
+
+.back-btn {
+    text-decoration: none;
+    background: #555;
+    padding: 7px 12px;
+    color: white;
+    border-radius: 5px;
+}
+
+.message {
+    background: #d4ffd4;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    color: #1d7a1d;
+    font-weight: bold;
+}
+
+.update-form label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+}
+
+.update-btn {
+    padding: 10px 20px;
+    background: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 100%;
+    font-size: 16px;
+}
+
+.update-btn:hover {
+    background: #005fcc;
+}

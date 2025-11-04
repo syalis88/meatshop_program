@@ -1,0 +1,191 @@
+/* ===============================
+   Global Styles
+=============================== */
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  background-color: #f5f6f7;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+.container {
+  max-width: 1000px;
+  background: #fff;
+  margin: 50px auto;
+  padding: 30px 40px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  overflow-x: hidden;
+}
+
+/* ===============================
+   Header Bar
+=============================== */
+.header-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.header-bar h1 {
+  color: #b71c1c;
+  font-size: 2rem;
+  margin: 0;
+}
+
+.top-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.back-btn,
+.logout-btn {
+  text-decoration: none;
+  padding: 10px 18px;
+  border-radius: 6px;
+  font-weight: 600;
+  color: #fff;
+  transition: all 0.2s ease;
+}
+
+.back-btn {
+  background-color: #007bff;
+}
+
+.back-btn:hover {
+  background-color: #0056b3;
+}
+
+.logout-btn {
+  background-color: #e53935;
+}
+
+.logout-btn:hover {
+  background-color: #b71c1c;
+}
+
+/* ===============================
+   Table Container
+=============================== */
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  margin-top: 20px;
+}
+
+/* ===============================
+   Orders Table Styling
+=============================== */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed; /* ensures table fits container */
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+th, td {
+  padding: 12px 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  word-wrap: break-word; /* allows address wrapping */
+  white-space: normal;   /* removes nowrap constraint */
+}
+
+th {
+  background-color: #b71c1c;
+  color: white;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+}
+
+/* Specific column widths for better balance */
+th:nth-child(1), td:nth-child(1) { width: 8%; }   /* Order ID */
+th:nth-child(2), td:nth-child(2) { width: 15%; }  /* Customer */
+th:nth-child(3), td:nth-child(3) { width: 25%; }  /* Address */
+th:nth-child(4), td:nth-child(4) { width: 15%; }  /* Delivery Date */
+th:nth-child(5), td:nth-child(5) { width: 10%; }  /* Total */
+th:nth-child(6), td:nth-child(6) { width: 12%; }  /* Status */
+th:nth-child(7), td:nth-child(7) { width: 15%; }  /* Action */
+
+tr:nth-child(even) {
+  background-color: #fafafa;
+}
+
+tr:hover {
+  background-color: #fff3f3;
+}
+
+/* ===============================
+   Buttons inside table
+=============================== */
+.view-btn, .update-btn {
+  text-decoration: none;
+  padding: 6px 12px;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 0.85rem;
+  transition: background 0.2s ease;
+}
+
+.view-btn {
+  background-color: #007bff;
+}
+
+.view-btn:hover {
+  background-color: #0056b3;
+}
+
+.update-btn {
+  background-color: #28a745;
+}
+
+.update-btn:hover {
+  background-color: #1e7e34;
+}
+
+/* ===============================
+   Status Labels
+=============================== */
+.status-box {
+  display: inline-block;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: white;
+  text-transform: uppercase;
+}
+
+.status-box.pending {
+  background-color: #fbc02d;
+  color: #222;
+}
+
+.status-box.completed {
+  background-color: #43a047;
+}
+
+.status-box.cancelled {
+  background-color: #e53935;
+}
+
+/* ===============================
+   Responsive Adjustments
+=============================== */
+@media (max-width: 768px) {
+  .container {
+    padding: 20px;
+  }
+
+  table {
+    font-size: 14px;
+  }
+
+  th, td {
+    padding: 8px 6px;
+  }
+}
