@@ -6,7 +6,7 @@ if (isset($_SESSION['user'])) {
         header('Location: ../admin_panel/dashboard.php');
         exit();
     } elseif ($_SESSION['user']['role'] === 'customer') {
-        header('Location: ../productitems_index/viewmeat.php');
+        header('Location: ../productitems_index/viewproducts.php');
         exit();
     }
 }
@@ -16,18 +16,19 @@ $account = new Account();
 $error = "";
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $account->email = htmlentities($_POST['email']);
-    $account->password = htmlentities($_POST['password']);
+    // SAFE INPUT
+    $account->email = trim($_POST['email']);
+    $account->password = trim($_POST['password']);
 
     if ($account->login()) {
-        // Get full user info
-        $_SESSION['user'] = $account->getUserByEmail();
+
+        $_SESSION['user'] = $account->getUserByEmail($account->email);
 
         if ($_SESSION['user']['role'] === 'admin') {
             header('Location: ../admin_panel/dashboard.php');
             exit();
         } elseif ($_SESSION['user']['role'] === 'customer') {
-            header('Location: ../productitems_index/viewmeat.php');
+            header('Location: ../productitems_index/viewproducts.php');
             exit();
         }
     } else {
