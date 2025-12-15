@@ -76,7 +76,6 @@ $orders = $orderObj->getUserOrders($userId);
         <p><strong>Name:</strong> <?= htmlspecialchars($_SESSION['user']['FirstName'] . ' ' . $_SESSION['user']['LastName']); ?></p>
         <p><strong>Email:</strong> <?= htmlspecialchars($_SESSION['user']['email']); ?></p>
         
-        <!-- UPDATED: Display phone from session -->
         <?php if (!empty($_SESSION['user']['phone'])): ?>
             <p><strong>Phone:</strong> <?= htmlspecialchars($_SESSION['user']['phone']); ?></p>
         <?php else: ?>
@@ -97,7 +96,6 @@ $orders = $orderObj->getUserOrders($userId);
             <p><strong>Email Verified:</strong> <span style="color: orange;">⚠ Not Verified</span></p>
         <?php endif; ?>
         
-        <!-- Optional: Add edit profile button -->
         <a href="edit_profile.php" class="edit-profile-btn">Edit Profile</a>
     </div>
 
@@ -119,8 +117,7 @@ $orders = $orderObj->getUserOrders($userId);
                             <p><strong>Order Date:</strong> <?= date('F j, Y', strtotime($order['order_date'])) ?></p>
                             <p><strong>Subtotal:</strong> ₱<?= number_format($order['subtotal'], 2) ?></p>
                             <p><strong>Total Amount:</strong> ₱<?= number_format($order['total_amount'], 2) ?></p>
-                            
-                            <!-- REMOVED: customer_phone from orders table - phone is now in user session -->
+                        
                             
                             <?php if (!empty($order['delivery_date'])): ?>
                                 <p><strong>Delivery Date:</strong> <?= date('F j, Y', strtotime($order['delivery_date'])) ?></p>
