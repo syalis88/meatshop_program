@@ -1,15 +1,11 @@
 <?php
 
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-
 require_once "includes/auth_admin.php";
 require_once "../classes/order.php";
 
 $orderObj = new Order();
 $orders = $orderObj->getAllOrders();
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,6 +15,21 @@ $orders = $orderObj->getAllOrders();
 </head>
 <body>
 
+<header>
+  <h1>Meat Shop Admin Panel</h1>
+  <nav>
+    <a href="dashboard.php">Dashboard</a>
+    <a href="orders.php">View Orders</a>
+    <a href="sales_report.php">Sales Report</a>
+    <a href="notifications.php">Notifications</a>
+    
+    <?php include './includes/notification_bell.php'; ?>
+    
+    <a href="../account/logout.php">Logout</a>
+  </nav>
+</header>
+
+<main>
 <div class="container">
 
     <div class="header-bar">
@@ -26,11 +37,9 @@ $orders = $orderObj->getAllOrders();
 
         <div class="top-buttons">
             <a href="dashboard.php" class="back-btn">Back</a>
-            <a href="../account/logout.php" class="logout-btn">Logout</a>
         </div>
     </div>
 
-    <!-- ✅ Table wrapper ensures table doesn’t overflow -->
     <div class="table-container">
         <table>
             <thead>
@@ -48,11 +57,24 @@ $orders = $orderObj->getAllOrders();
             <tbody>
                 <?php if (!empty($orders)): ?>
                     <?php foreach ($orders as $order): ?>
-                        <?php $orderstatus = strtolower($order['status']); ?>
+                        <?php 
+                        // Determine status class
+                        if ($order['status'] == 'Pending') {
+                            $orderstatus = 'pending';
+                        } elseif ($order['status'] == 'Processing') {
+                            $orderstatus = 'processing';
+                        } elseif ($order['status'] == 'Completed') {
+                            $orderstatus = 'completed';
+                        } elseif ($order['status'] == 'Cancelled') {
+                            $orderstatus = 'cancelled';
+                        } else {
+                            $orderstatus = '';
+                        }
+                        ?>
                         <tr>
-                            <td><?= $order['id'] ?></td>
-                            <td><?= htmlspecialchars($order['customer_name'] ?? '') ?></td>
-                            <td><?= htmlspecialchars($order['customer_address'] ?? '') ?></td>
+                            <td><?= $order['order_id'] ?></td>
+                            <td><?= htmlspecialchars($order['FirstName'] . ' ' . $order['LastName']); ?></td>
+                            <td><?= htmlspecialchars($order['address'] ?? ''); ?></td>
                             <td><?= $order['delivery_date'] ?></td>
                             <td>₱<?= number_format($order['total_amount'], 2) ?></td>
                             <td>
@@ -61,14 +83,15 @@ $orders = $orderObj->getAllOrders();
                                 </span>
                             </td>
                             <td>
-                                <a class="view-btn" href="vieworders.php?id=<?= $order['id'] ?>">View</a>
-                                <a class="update-btn" href="updateorder.php?id=<?= $order['id'] ?>">Update</a>
+                                <a class="view-btn" href="vieworders.php?id=<?= $order['order_id'] ?>">View</a>
+                                <a class="update-btn" href="updateorder.php?id=<?= $order['order_id'] ?>">Update</a>
+                                <a class="print-btn" href="print_order.php?id=<?= $order['order_id'] ?>" target="_blank">Print</a>
                             </td>
                         </tr>
                     <?php endforeach; ?>
                 <?php else: ?>
                     <tr>
-                        <td colspan="7" style="text-align:center;">No orders found.</td>
+                        <td colspan="7" class="empty-msg">No orders found.</td>
                     </tr>
                 <?php endif; ?>
             </tbody>
@@ -76,8 +99,6 @@ $orders = $orderObj->getAllOrders();
     </div>
 
 </div>
-
+</main>
 </body>
 </html>
-
-
